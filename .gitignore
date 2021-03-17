@@ -1,2 +1,6 @@
 conf
 Data/
+__pycache__
+src/d01_data/__pycache__
+src/d01_data/__pycache__/*
+src/d02_data/__pycache__
