@@ -24,7 +24,9 @@ def createData(cursor, data, name, mydb) :
 
 def cleanData(data) :
     gender = ['Male','Female','Prefer not to say','Non-binary/third gender']
-    data = data[data.Country == 'United States']
+    data = data.loc[data.Country == 'United States']
+    data = data.loc[data.YearsWithThisTypeOfJob > 0]
+    data = data.loc[data.SalaryUSD > 10000]
 
     cleanHoursPerWeek = data.HoursWorkedPerWeek.replace(['Not Asked'], [np.nan])
     cleanHoursPerWeek.loc[cleanHoursPerWeek > 100] = np.nan
@@ -56,5 +58,7 @@ def cleanData(data) :
     for x in cleanHowManyComp :
         newHowMany.append(int(str(x)[0]))
     data.HowManyCompanies = pd.Series(newHowMany)
+
+    # SalaryUSD
 
     return data
