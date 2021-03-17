@@ -22,5 +22,5 @@ columns = ['SalaryUSD', 'Country', 'PostalCode', 'JobTitle', 'YearsWithThisTypeO
 data = ld.loadExcel('/home/apprenant/American-Dream/Data/01_RAW.xlsx', 3, columns)
 
 data = cip.cleanData(data)
-# cip.createData(cursor, data, "2020Data" , mydb)
+cip.createData(cursor, data, "2020Data" , mydb)
 data.to_csv('./Data/02_Clean.csv')
