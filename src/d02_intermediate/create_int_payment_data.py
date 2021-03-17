@@ -27,6 +27,7 @@ def cleanData(data) :
     data = data.loc[data.Country == 'United States']
     data = data.loc[data.YearsWithThisTypeOfJob > 0]
     data = data.loc[data.SalaryUSD > 10000]
+    data = data.loc[data.JobTitle != "Other"]
 
     cleanHoursPerWeek = data.HoursWorkedPerWeek.replace(['Not Asked'], [np.nan])
     cleanHoursPerWeek.loc[cleanHoursPerWeek > 100] = np.nan
@@ -59,6 +60,12 @@ def cleanData(data) :
         newHowMany.append(int(str(x)[0]))
     data.HowManyCompanies = pd.Series(newHowMany)
 
-    # SalaryUSD
+    cleanJobTitle = []
+    for x in data.JobTitle :
+        if "DBA" in x :
+            cleanJobTitle.append("DBA")
+        else :
+            cleanJobTitle.append(x)
+    data.JobTitle = pd.Series(cleanJobTitle)
 
     return data
