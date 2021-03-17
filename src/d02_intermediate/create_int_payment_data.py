@@ -27,15 +27,22 @@ def cleanData(data) :
     data = data.loc[data.Country == 'United States']
     data = data.loc[data.YearsWithThisTypeOfJob > 0]
     data = data.loc[data.SalaryUSD > 10000]
+    data = data.loc[data.SalaryUSD < 1000000]
     data = data.loc[data.JobTitle != "Other"]
+
+    # Hours Per Week
 
     cleanHoursPerWeek = data.HoursWorkedPerWeek.replace(['Not Asked'], [np.nan])
     cleanHoursPerWeek.loc[cleanHoursPerWeek > 100] = np.nan
     data.HoursWorkedPerWeek = cleanHoursPerWeek
 
+    # Gender
+
     cleanGender = data.Gender
     cleanGender.loc[(~data.Gender.isin(gender))] = np.nan
     data.Gender = cleanGender
+
+    # Years
 
     cleanYearsWithThisTypeOfJob = data.YearsWithThisTypeOfJob
     cleanYearsWithThisTypeOfJob.loc[cleanYearsWithThisTypeOfJob > 40] = np.nan
