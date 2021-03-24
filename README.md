@@ -7,3 +7,9 @@ Les résultats sont visibles sur le notebook.
 Mais ma conclusion est simple, je ne suis pas spécialement attiré par les USA, c'est un pays dont je ne partage pas l'état d'esprit, donc à part si l'occasion se présente, je ne vais pas spécialement chercher à faire carrière là bas.
 
 Tout ça pour dire que l'argent c'est bien, les convictions aussi
+
+# Notebook :
+Fichier pour la visu
+
+# src :
+Dossier pour le nettoyage des données
